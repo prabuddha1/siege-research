@@ -45,22 +45,40 @@ h2{
   height: 3vmin;
 }
 
-.site-header{
-  width: 60vw;
-  height: 7vh;
-  background: #1C2128;
+.site-header {
+  width: 100%;  /* Extend full width of the viewport */
+  height: 60px;  /* Fixed height for consistency */
+  background: #1C2128;  /* Dark background for contrast */
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-evenly;  /* Evenly space the elements */
   align-items: center;
   color: white;
-  font-size: .75vw;
-  font-weight: lighter !important;
-  
-  padding-left: 20vw;
-  padding-right: 20vw;
-  box-shadow: inset 0 0 1vw rgb(0, 0, 0);
+  padding: 0 20px;  /* Padding on sides for some breathing room */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);  /* Subtle shadow for depth */
+  font-family: 'Lato', sans-serif;  /* Ensure font consistency */
+  font-size: 18px;  /* Fixed font size for readability */
+  font-weight: 400;
+}
 
+.site-header h2 {
+  cursor: pointer;  /* Indicates interactivity */
+  margin: 0 20px;  /* Spacing between menu items */
+  font-size: 20px;  /* Larger font size for importance */
+  transition: color 0.3s ease;  /* Smooth transition for hover effects */
+}
 
+.site-header h2:hover {
+  color: #61dafb;  /* Highlight color on hover */
+}
+
+#linked-in-logo {
+  width: 32px;  /* Fixed size for LinkedIn logo */
+  height: 32px;
+  transition: transform 0.3s ease;  /* Smooth transform on hover */
+}
+
+#linked-in-logo:hover {
+  transform: scale(1.1);  /* Slightly enlarge on hover */
 }
 
 .site-content{

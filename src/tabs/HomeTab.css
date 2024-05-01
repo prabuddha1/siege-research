@@ -6,6 +6,166 @@ hr{
 
 }
 
+.site-footer {
+    width: 100%;
+    padding: 20px;
+    background-color: #003263; /* Dark blue to contrast with the main content */
+    color: #fff; /* White text for readability */
+    text-align: center; /* Center-align the content for a neat appearance */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Shadow to lift the footer visually */
+
+    font-size: 1rem; /* Standard font size for footer text */
+}
+
+.site-footer h4 {
+    margin-bottom: 10px; /* Space below the title */
+    font-size: 1.5rem; /* Larger text for the heading */
+}
+
+.site-footer p {
+    margin-bottom: 8px; /* Uniform space between lines */
+}
+
+.site-footer a {
+    color: #f4f4f8; /* Light grey links for subtle contrast and visibility */
+    text-decoration: none; /* No underline for a cleaner look */
+}
+
+.site-footer a:hover {
+    text-decoration: underline; /* Underline on hover for better user interaction feedback */
+}
+
+
+.recent-achievements {
+    width: 100%;
+    padding: 20px;
+    background-color: #fff; /* White background for clear distinction */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin-top: 30px; /* Space from previous section */
+}
+
+.section-title {
+    text-align: center;
+    color: #003263; /* Consistent blue for section titles */
+    font-size: 2rem; /* Prominent size for section titles */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+.achievements-container h3 {
+    color: #257cb6; /* Lighter blue for subheadings */
+    font-size: 1.5rem; /* Subheading size */
+    margin-top: 20px; /* Spacing above each subheading */
+}
+
+.achievements-container ul {
+    list-style-type: circle; /* Different style to distinguish from other lists */
+    padding-left: 40px; /* Indentation for readability */
+    margin-top: 10px; /* Top margin for separation */
+    list-style-type: none;
+}
+
+.achievements-container ul li {
+    margin-bottom: 10px; /* Spacing between list items */
+    line-height: 1.5; /* Enhanced line height for readability */
+    color: #333; /* Dark grey for text for better readability */
+}
+
+
+hr {
+    width: 100%;
+    height: 1px;
+    background: #777; /* Ensuring contrast and visibility */
+}
+
+.research-image {
+    width: 100%; /* responsive to container size */
+    height: auto; /* maintain aspect ratio */
+}
+
+#publication-list {
+    width: 100%;
+    overflow-y: auto; /* allows scrolling for long lists */
+    margin-top: 1rem;
+}
+
+.publications-display {
+    background: #003263;
+    color: white;
+    padding: 2vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.research-display {
+    width: 100%; /* take full available width */
+}
+
+.publication {
+    margin: 10px 0;
+}
+
+.publication-title {
+    font-size: 1.2rem; /* increased font size for readability */
+    text-decoration: none; /* removes underline */
+    color: #FFF;
+}
+
+.bottom-lab-display {
+    padding: 2vw 0;
+    flex-wrap: wrap; /* ensures responsiveness */
+}
+
+.offset-color1,
+.offset-color2 {
+    margin: 10px;
+    border-radius: 8px; /* rounded corners */
+}
+
+#about-image {
+    width: 80%; /* responsive width */
+    height: auto; /* maintain aspect ratio */
+}
+
+.research-area-image {
+    width: 100px;
+    height: 100px;
+}
+
+.research-area-title,
+.about-header,
+.about-tagline {
+    text-align: center; /* centering titles for better focus */
+}
+
+.lab-description {
+    padding: 20px;
+    text-align: justify;
+    line-height: 1.6; /* improves readability */
+}
+
+.research-area-display {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s ease; /* smooth hover effect */
+}
+
+.research-area-display:hover {
+    transform: translateY(-5px); /* subtle hover effect */
+}
+
+.about-lab-display {
+    padding: 20px;
+}
+
+.middle-lab-display {
+    flex-wrap: wrap; /* ensures responsiveness */
+    gap: 20px; /* spacing between elements */
+}
+
+.home-container {
+    gap: 20px; /* consistent spacing between sections */
+}
+
 .research-image{
     width: 90vmin;
     height: 50vmin;
@@ -64,7 +224,7 @@ hr{
     display: flex;
     justify-content: space-evenly;
 
-    padding-top: 5vh;
+    padding-top: 15vh;
 }
 
 .offset-color1{
@@ -89,14 +249,52 @@ hr{
     padding-bottom: 3vh;
 }
 
-.about-lab-display{
-    width: 45vw;
-    height: 93vh;
+.about-lab-display {
+    width: 45vw; /* Maintain current width */
+    height: 100vh;
+    padding: 20px; /* Increase padding for better spacing */
 
+    background-color: #f4f4f8; /* Light background for a subtle contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin: 20px 0; /* Added margin for separation from other elements */
+}
+
+.about-header {
+    font-size: 2vw; /* Slightly larger font size */
+    color: #0C598E;
+    margin-bottom: 10px; /* Space between header and tagline */
+    font-weight: bold; /* Bold font for emphasis */
+    text-align: center; /* Center alignment for aesthetics */
+}
+
+.about-tagline {
+    color: #257cb6;
+    font-size: 1.2vw; /* Slightly larger for emphasis */
+    margin-bottom: 15px; /* More space before the main description */
+    text-align: center; /* Center alignment for coherence */
+}
+
+#about-image {
+    width: 90%; /* Responsive width to adjust within the container */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 15px; /* Space before the text description */
+}
+
+.lab-description {
+    font-size: 1.1vw; /* Slightly larger font size for readability */
+    color: #333; /* Darker color for better readability */
+    text-align: justify; /* Justify alignment for a cleaner look */
+    line-height: 1.6; /* Improved line spacing for reading comfort */
+    max-width: 100%; /* Ensures text doesn't overflow its container */
+}
+
+.about-lab-display{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    padding-top: 5vh;
 
     
 }
