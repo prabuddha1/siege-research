@@ -1,7 +1,8 @@
 {
   "name": "lab-website",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://sophiewalden.github.io/lab-website/",
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
