@@ -2,6 +2,8 @@
 import './HomeTab.css';
 import React from 'react';
 
+import SlidingImage from './SlidingImage.jsx';
+
 function HomeTab() {
 
    const [publications, setPublications] = React.useState([]);
@@ -29,7 +31,7 @@ function HomeTab() {
     <div className="home-container">
 
       <div className="top-lab-display">
-        <h3>Welcome to the IOT Lab!</h3>
+        <h3>SIEGE: Secure and Intelligent Edge</h3>
         <img alt="lab" src="https://i.imgur.com/xaqV3Lr.png"></img>
       </div>
 
@@ -71,10 +73,11 @@ function HomeTab() {
         </div>
 
         <div className="about-lab-display">
-            <h2 className="about-header">About The IOT Lab</h2>
+            <h2 className="about-header">About The SIEGE Lab</h2>
             <h4 className="about-tagline">Leading the Charge: Pioneering AI, IoT, and Security</h4>
         
-            <img id="about-image" src="https://media.licdn.com/dms/image/D4E22AQF-_wKiSYKHeg/feedshare-shrink_800/0/1712699163566?e=2147483647&v=beta&t=Xh6PR84dUdIJy7jy6sviZE7bzJmjZxizQvw0rEw-Lxk"></img>
+            {/* <img id="about-image" src="https://media.licdn.com/dms/image/D4E22AQF-_wKiSYKHeg/feedshare-shrink_800/0/1712699163566?e=2147483647&v=beta&t=Xh6PR84dUdIJy7jy6sviZE7bzJmjZxizQvw0rEw-Lxk"></img> */}
+            <SlidingImage></SlidingImage>
 
             <h3 className="lab-description">Prabuddha Chakraborty is an Assistant Professor at the University of Maine. His research interest lies in the intersecting areas of Artificial Intelligence, Internet-of-Things, and system security. He received his PhD in Electrical and Computer Engineering from the University of Florida. He has worked within the Security Software Team at Texas Instruments and the FPGA acceleration R&D team at Xilinx. His research effort has so far led to more than 20 peer-reviewed journal and conference articles published or accepted in prestigious venues such as Nature Scientific Reports, IEEE Internet of Things Journal, Neural Computing and Applications, IEEE Transactions on Information Forensics and Security, International Test Conference, and Design Automation Conference</h3>
         </div>
