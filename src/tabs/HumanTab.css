@@ -26,11 +26,11 @@
 }
 
 
-/* Assuming StaffCard is a component, here are some basic styles */
 .staff-card {
     background-color: #f9f9f9; /* Light background for the card */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
     border-radius: 10px; /* Rounded corners */
+
     text-align: center; /* Center text inside the card */
 }
 

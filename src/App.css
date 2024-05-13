@@ -34,7 +34,22 @@ h2{
   font-size: 15px;
 }
 
+.selectedTab {
+  border: 1px solid #333;
+  background-color: #dadada;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 4px;
 
+
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.selectedTab:hover {
+  background-color: #ddd;
+}
 
 .hiddenTab{
   display: none !important;
@@ -48,11 +63,11 @@ h2{
 .site-header {
   width: 100%;  /* Extend full width of the viewport */
   height: 60px;  /* Fixed height for consistency */
-  background: #1C2128;  /* Dark background for contrast */
+
   display: flex;
   justify-content: space-evenly;  /* Evenly space the elements */
   align-items: center;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 0 20px;  /* Padding on sides for some breathing room */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);  /* Subtle shadow for depth */
   font-family: 'Lato', sans-serif;  /* Ensure font consistency */
@@ -63,12 +78,12 @@ h2{
 .site-header h2 {
   cursor: pointer;  /* Indicates interactivity */
   margin: 0 20px;  /* Spacing between menu items */
-  font-size: 20px;  /* Larger font size for importance */
+  font-size: 1.5vw;  /* Larger font size for importance */
   transition: color 0.3s ease;  /* Smooth transition for hover effects */
 }
 
 .site-header h2:hover {
-  color: #61dafb;  /* Highlight color on hover */
+  color: #829ca3;  /* Highlight color on hover */
 }
 
 #linked-in-logo {
