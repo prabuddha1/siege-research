@@ -69,7 +69,7 @@ h2{
   align-items: center;
   color: rgb(0, 0, 0);
   padding: 0 20px;  /* Padding on sides for some breathing room */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);  /* Subtle shadow for depth */
+
   font-family: 'Lato', sans-serif;  /* Ensure font consistency */
   font-size: 18px;  /* Fixed font size for readability */
   font-weight: 400;
@@ -96,9 +96,6 @@ h2{
   transform: scale(1.1);  /* Slightly enlarge on hover */
 }
 
-.site-content{
-  background: #FFFFFF;
-}
 
 .App-logo {
   height: 40vmin;

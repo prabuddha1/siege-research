@@ -3,28 +3,85 @@ import './HomeTab.css';
 import React from 'react';
 
 import SlidingImage from './SlidingImage.jsx';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getStorage } from "firebase/storage";
+import { ref, getDownloadURL } from "firebase/storage";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAhN7k417IE4HdGDtIlAPutebfh8WSlqjk",
+  authDomain: "lab-website-f577d.firebaseapp.com",
+  projectId: "lab-website-f577d",
+  storageBucket: "lab-website-f577d.appspot.com",
+  messagingSenderId: "111384155166",
+  appId: "1:111384155166:web:ba9fb56f84be67a2a4ca0f",
+  measurementId: "G-6245NWRYWG"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+const storage = getStorage(app);
 
 function HomeTab() {
 
    const [publications, setPublications] = React.useState([]);
    const [researchAreas, setResearchAreas] = React.useState("none");
 
-   React.useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://127.0.0.1:2204/get_publications');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setPublications(data);
-      } catch (error) {
-        console.error('Failed to fetch publications:', error);
-      } 
-    };
+   const fileRef = ref(storage, 'Publications.json');
+    React.useEffect(() => {
+      // Get the download URL of the file
+      getDownloadURL(fileRef)
+        .then((url) => {
+          // Use the URL to download the file or perform further processing
+          console.log("Download URL:", url);
 
-    fetchData();
-  }, []); // Empty dependency array means this effect runs once on mount
+          const fetchData = async () => {
+            try {
+              const response = await fetch(url);
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              const data = await response.json();
+
+              console.log(data);
+              setPublications(data);
+            } catch (error) {
+              console.error('Failed to fetch publications:', error);
+            } 
+          };
+
+          fetchData();
+        })
+        .catch((error) => {
+          // Handle any errors
+          console.error("Error getting download URL:", error);
+        });
+    }, []); // Empty dependency array means this effect runs once on mount
+
+
+  //  React.useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch('http://127.0.0.1:2204/get_publications');
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+  //       const data = await response.json();
+  //       setPublications(data);
+  //     } catch (error) {
+  //       console.error('Failed to fetch publications:', error);
+  //     } 
+  //   };
+
+  //   fetchData();
+  // }, []); // Empty dependency array means this effect runs once on mount
 
 
 
@@ -33,7 +90,7 @@ function HomeTab() {
 
       <div className="top-lab-display">
         <img className="lab-name-display" src="https://i.imgur.com/yn4CCBv.png"></img>
-        {/* <h3>SIEGE: Secure and Intelligent Edge</h3> */}
+     
         <img className="top-display-image" alt="lab" src="https://i.imgur.com/xaqV3Lr.png"></img>
         </div>
 
@@ -77,7 +134,7 @@ function HomeTab() {
           <div className="about-lab-display">
 
             <div className={`${researchAreas == 'none' ? 'about-display-tab' : 'hiddenTab'}`}>
-                <h4 className="about-tagline">Pioneering AI, IoT, and Security</h4>
+                {/* <h4 className="about-tagline">Pioneering AI, IoT, and Security</h4> */}
       
                 <SlidingImage></SlidingImage>
 
@@ -171,6 +228,7 @@ function HomeTab() {
           <p>Email: <a href="mailto:prabuddha@maine.edu">prabuddha@maine.edu</a></p>
           <p>Explore More: <a href="https://www.google.com/scholar?q=Prabuddha+Chakraborty">Google Scholar Profile</a></p>
           <p>Download: <a href="ProfileResumeLink">Resume</a> (updated 12/10/2023)</p>
+          <h3>Site Developed by Sophie Walden</h3>
         </div>
 
 

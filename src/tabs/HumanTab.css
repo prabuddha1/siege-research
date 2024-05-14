@@ -34,3 +34,53 @@
     text-align: center; /* Center text inside the card */
 }
 
+
+.bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    width: 35vw;
+
+    padding-top: 2vh;
+
+}
+
+.bio-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+.bio h4 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    font-weight: bold; /* Add bold font weight for emphasis */
+}
+
+.bio h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    line-height: 0; /* Adjust line height for better spacing */
+    color: #003263; /* Change color to match the title */
+}
+
+.bio p {
+    font-size: 1rem;
+    color: #555555;
+    line-height: 1.5;
+    margin-top: 10px; /* Add top margin for separation */
+}
+
+#bio-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding-left: 5vw;
+    padding-right: 5vw;
+    justify-content: space-around;
+}

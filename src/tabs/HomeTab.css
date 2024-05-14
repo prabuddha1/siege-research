@@ -17,14 +17,20 @@
     border-left: solid black 5px;
     border-bottom: solid black 2px;
     background-color: #c0c0b8;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+    
+     box-shadow: inset 0 0 2vw rgba(0, 0, 0, 0.5); /* Add inset box shadow */
+    
   }
 
 .top-display-image{
     border-top: solid black 2px;
     border-right: solid black 5px;
     border-bottom: solid black 2px;
-    border-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
   
 .top-lab-display:hover {
@@ -223,10 +229,7 @@ hr {
     padding: 20px;
 }
 
-.middle-lab-display {
-    flex-wrap: wrap; /* ensures responsiveness */
-    gap: 20px; /* spacing between elements */
-}
+
 
 .home-container {
     gap: 20px; /* consistent spacing between sections */
@@ -438,7 +441,7 @@ hr {
 }
 
 .middle-lab-display{
-    width: 70vw;
+    width: 75vw;
     height: 100vh;
 
     display: flex;
