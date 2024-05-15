@@ -83,7 +83,7 @@ function HomeTab() {
   //   fetchData();
   // }, []); // Empty dependency array means this effect runs once on mount
 
-
+    let [IOTindex, setIOTindex] = React.useState(0);
 
   return (
     <div className="home-container">
@@ -143,21 +143,26 @@ function HomeTab() {
             </div>
 
             <div className={`${researchAreas == 'AI' ? 'about-display-tab' : 'hiddenTab'}`}>
-                <h4 className="about-tagline">Artificial Intelligence</h4>
-      
-                <img className="lab-display-image" src="https://www.cnet.com/a/img/resize/9a13e1e92a7b66cbff9db2934b3f66bf01a4afb6/hub/2023/08/24/821b0d86-e29b-4028-ac71-ef63ca020de8/gettyimages-1472123000.jpg?auto=webp&fit=crop&height=675&width=1200"></img>
-
-                <h3 className="lab-description">Artificial Intelligence (AI) is a branch of computer science that focuses on creating intelligent machines capable of performing tasks that typically require human intelligence. It involves the study and development of algorithms and models that enable computers to understand, reason, learn, and make decisions. AI has applications in various fields, including natural language processing, computer vision, robotics, and data analysis.</h3>
-          
+                {publications.filter(pub => pub["tag"]=="AI").map(pub => (
+                    <div className="publication">
+                        <a key={pub.name} href={pub.link} className="publication-title">{pub.name}</a>
+                    </div>
+                ))}
+              
             </div>
 
             <div className={`${researchAreas == 'IoT' ? 'about-display-tab' : 'hiddenTab'}`}>
-                <h4 className="about-tagline"> Internet of Things</h4>
+                 {publications.filter(pub => pub["tag"]=="IOT").slice(0, IOTindex).map(pub => (
+                    <div className="publication">
+                        <h4 className="about-tagline">{pub.name}</h4>
 
-                <img className="lab-display-image" src="https://assets.datamation.com/uploads/2021/04/IOT-4.png"></img>
+                        <img className="lab-display-image" src={pub.image}></img>
 
-                <h3 className="lab-description">The Internet of Things (IoT) refers to the network of physical devices, vehicles, appliances, and other objects embedded with sensors, software, and connectivity, enabling them to collect and exchange data. IoT allows for the integration of the physical world with the digital world, creating opportunities for automation, monitoring, and control. It has applications in various domains, including smart homes, healthcare, transportation, and industrial automation.</h3>
-          
+
+                        <h3 className="lab-description">{pub.description}</h3>
+
+                    </div>
+                ))}
             </div>
 
             <div className={`${researchAreas == 'Security' ? 'about-display-tab' : 'hiddenTab'}`}>
@@ -174,15 +179,25 @@ function HomeTab() {
       </div>
 
       <div className="bottom-lab-display">
-        <div className="research-display">
-            <h3>Research</h3>
+        <div className="recent-achievements">
+            <h2 className="section-title">Recent Achievements & Notable Contributions</h2>
 
-            <div className="research">
-                <img className="research-image" src="https://i.imgur.com/hgDQPdb.png"></img>
-            </div>
+            <div className="achievements-container">
+              <h3>Notable Achievements</h3>
+              <ul>
+                <li>TTTC’s E. J. McCluskey Best Doctoral Thesis 2022 Award</li>
+                <li>Top Picks in Hardware and Embedded Security 2021, IEEE HSTTC</li>
+                <li>Innovation of the Year Award, University of Florida, 2022</li>
+                <li>Featured work on IEEE Spectrum for innovative electric vehicle charging technologies</li>
+              </ul>
 
-            <div className="research">
-                <img className="research-image" src="https://i.imgur.com/Wu62TI7.png"></img>
+              <h3>Notable Research Contributions</h3>
+              <ul>
+                <li>HASTE: Software Security Analysis for Timing Attacks on Clear Hardware</li>
+                <li>SAIL: Analyzing Structural Artifacts of Logic Locking Using Machine Learning</li>
+                <li>MAGIC: Machine Learning Guided Image Compression for IoT</li>
+                <li>BINGO: Brain-Inspired Learning Memory Network</li>
+              </ul>
             </div>
         </div>
 
@@ -192,7 +207,7 @@ function HomeTab() {
             <div id="publication-list">
                 {publications.map(pub => (
                     <div className="publication">
-                        <a key={pub._id} href={pub.url} className="publication-title">{pub.name}</a>
+                        <a key={pub.name} href={pub.link} className="publication-title">{pub.name}</a>
                     </div>
                 ))}
               
@@ -201,27 +216,7 @@ function HomeTab() {
 
       </div>
 
-      <div className="recent-achievements">
-          <h2 className="section-title">Recent Achievements & Notable Contributions</h2>
-
-          <div className="achievements-container">
-            <h3>Selected Achievements</h3>
-            <ul>
-              <li>TTTC’s E. J. McCluskey Best Doctoral Thesis 2022 Award</li>
-              <li>Top Picks in Hardware and Embedded Security 2021, IEEE HSTTC</li>
-              <li>Innovation of the Year Award, University of Florida, 2022</li>
-              <li>Featured work on IEEE Spectrum for innovative electric vehicle charging technologies</li>
-            </ul>
-
-            <h3>Notable Research Contributions</h3>
-            <ul>
-              <li>HASTE: Software Security Analysis for Timing Attacks on Clear Hardware</li>
-              <li>SAIL: Analyzing Structural Artifacts of Logic Locking Using Machine Learning</li>
-              <li>MAGIC: Machine Learning Guided Image Compression for IoT</li>
-              <li>BINGO: Brain-Inspired Learning Memory Network</li>
-            </ul>
-          </div>
-      </div>
+      
       
       <div className="site-footer">
           <h4>Contact Information</h4>

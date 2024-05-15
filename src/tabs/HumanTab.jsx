@@ -88,27 +88,36 @@ function HumanTab() {
       {/* <h3 id="human-tab-title">Faculty and Staff</h3> */}
 {/* 
         <div id="staff-display">
-            {staff.map((item, index) => (
+            {staff.slice(1).map((item, index) => (
               <StaffCard key={index} name={item["name"]} title={item["title"]} email={item['email']} image={item['image']}></StaffCard>
             ))}
 
         </div> */}
 
-          <div id="bio-display">
-     
-
-            {staff.map((item, index) => (
-              <div className={`${item['bio']!=null ? '' : 'hiddenTab'} bio`} key={index}>
-                <img className="bio-image" src={item['image']}></img>
-                <h4>{item["name"]}</h4>
-                <h3>{item["title"]}</h3>
-                <h3>{item['email']}</h3>
-                <p>{item["bio"]}</p>
-              </div>
-            ))}
+        {staff[0] !== undefined && (
+          <div id="top-staff-display">
+            <div className={`${staff == [] ? 'hiddenTab' : ''} bio`}>
+                <img className="bio-image" src={staff[0]['image']}></img>
+                <h4>{staff[0]["name"]}</h4>
+                <h3>{staff[0]["title"]}</h3>
+                <h3>{staff[0]['email']}</h3>
+                <p>{staff[0]["bio"]}</p>
+            </div>
           </div>
+        )}
 
-         </div>
+        <div id="bio-display">
+          {staff.slice(1).map((item, index) => (
+            <div className={`${item['bio']!=null ? '' : 'hiddenTab'} bio`} key={index}>
+              <img className="bio-image" src={item['image']}></img>
+              <h4>{item["name"]}</h4>
+              <h3>{item["title"]}</h3>
+              <h3>{item['email']}</h3>
+              <p>{item["bio"]}</p>
+            </div>
+          ))}
+        </div>
+    </div>
   );
 }
 
