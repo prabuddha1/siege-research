@@ -84,3 +84,10 @@
     padding-right: 5vw;
     justify-content: space-around;
 }
+
+
+#timeline{
+    height: 100vh;
+    width: 50vw;
+
+}

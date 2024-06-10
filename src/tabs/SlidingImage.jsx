@@ -6,21 +6,26 @@ import "./SlidingImage.css";
 const SlidingImage = () => {
     const images = [
         {
-            original: "https://media.licdn.com/dms/image/D4E22AQF-_wKiSYKHeg/feedshare-shrink_800/0/1712699163566?e=2147483647&v=beta&t=Xh6PR84dUdIJy7jy6sviZE7bzJmjZxizQvw0rEw-Lxk",
-            thumbnail: "https://media.licdn.com/dms/image/D4E22AQF-_wKiSYKHeg/feedshare-shrink_800/0/1712699163566?e=2147483647&v=beta&t=Xh6PR84dUdIJy7jy6sviZE7bzJmjZxizQvw0rEw-Lxk",
-            alt: "Image 1"
+            original: "https://i.imgur.com/I7i4c0N.jpeg",
+            thumbnail: "https://i.imgur.com/I7i4c0N.jpeg",
+            alt: "Image 1",
+            id: 1
         },
         {
-            original: "https://www.wbrcae.com/uploads/umaine-pail-lab-v25-1400x800.jpg",
-            thumbnail: "https://www.wbrcae.com/uploads/umaine-pail-lab-v25-1400x800.jpg",
-            alt: "Image 2"
+            original: "https://i.imgur.com/3KZ9778.jpeg",
+            thumbnail: "https://i.imgur.com/3KZ9778.jpeg",
+            alt: "Image 2",
+            id: 2
         },
         {
-            original: "https://composites.umaine.edu/wp-content/uploads/sites/600/2020/06/W2_DownEast.jpeg",
-            thumbnail: "https://composites.umaine.edu/wp-content/uploads/sites/600/2020/06/W2_DownEast.jpeg",
-            alt: "Image 3"
+            original: "https://i.imgur.com/hTubviF.jpeg",
+            thumbnail: "https://i.imgur.com/hTubviF.jpeg",
+            alt: "Image 3",
+            id: 3
         }
     ];
+
+
     return (
 
         <ImageGallery className="react-image-gallery-slide"

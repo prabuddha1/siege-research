@@ -1,6 +1,9 @@
 
+import PublicationsTimeline from './PublicationsTimeline';
+
 import './HomeTab.css';
 import React from 'react';
+import { Chrono } from "react-chrono";
 
 import SlidingImage from './SlidingImage.jsx';
 // Import the functions you need from the SDKs you need
@@ -33,6 +36,8 @@ function HomeTab() {
 
    const [publications, setPublications] = React.useState([]);
    const [researchAreas, setResearchAreas] = React.useState("none");
+   const [news, setNews] = React.useState([]);
+   const [newsKey, setNewsKey] = React.useState(0);
 
    const fileRef = ref(storage, 'Publications.json');
     React.useEffect(() => {
@@ -50,8 +55,26 @@ function HomeTab() {
               }
               const data = await response.json();
 
-              console.log(data);
               setPublications(data);
+
+              const newsCards = data.map(publication => ({
+                title: publication.date,
+                cardTitle: publication.name,
+                cardDetailedText: publication.description,
+              }));
+          
+              // Sort newsCards by date ascending
+              setNews(prevNews => {
+                // Concatenate existing news with new newsCards
+                const updatedNews = [...prevNews, ...newsCards];
+        
+                // Sort updatedNews by date ascending
+                updatedNews.sort((a, b) => new Date(a.title) - new Date(b.title));
+        
+                return updatedNews;
+              });
+              setNewsKey(prevKey => prevKey + 1); 
+
             } catch (error) {
               console.error('Failed to fetch publications:', error);
             } 
@@ -65,25 +88,71 @@ function HomeTab() {
         });
     }, []); // Empty dependency array means this effect runs once on mount
 
+    const awardsFileRef = ref(storage, 'awards.json');
+      React.useEffect(() => {
+        // Get the download URL of the file
+        getDownloadURL(awardsFileRef)
+          .then((url) => {
+            // Use the URL to download the file or perform further processing
+            console.log("Download URL:", url);
 
-  //  React.useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch('http://127.0.0.1:2204/get_publications');
-  //       if (!response.ok) {
-  //         throw new Error('Network response was not ok');
-  //       }
-  //       const data = await response.json();
-  //       setPublications(data);
-  //     } catch (error) {
-  //       console.error('Failed to fetch publications:', error);
-  //     } 
-  //   };
+            const fetchData = async () => {
+              try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
 
-  //   fetchData();
-  // }, []); // Empty dependency array means this effect runs once on mount
+                const newsCards = data.map(publication => ({
+                  title: publication.date,
+                  cardTitle: publication.name,
+                  cardDetailedText: publication.description,
+                }));
+            
+                // Sort newsCards by date ascending
+                setNews(prevNews => {
+                  // Concatenate existing news with new newsCards
+                  const updatedNews = [...prevNews, ...newsCards];
+          
+                  // Sort updatedNews by date ascending
+                  updatedNews.sort((a, b) => new Date(a.title) - new Date(b.title));
+          
+                  return updatedNews;
+                });
+                setNewsKey(prevKey => prevKey + 1); 
+
+              } catch (error) {
+                console.error('Failed to fetch publications:', error);
+              } 
+            };
+
+            fetchData();
+          })
+          .catch((error) => {
+            // Handle any errors
+            console.error("Error getting download URL:", error);
+          });
+    }, []); // Empty dependency array means this effect runs once on mount
+
+
+
 
     let [IOTindex, setIOTindex] = React.useState(0);
+    let [SecurityIndex, setSecurityindex] = React.useState(0);
+    let [AIindex, setAIindex] = React.useState(0);
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+          setIOTindex((prevIndex) => (prevIndex + 1) % publications.filter(pub => pub["tag"]=="IOT").length);
+          setSecurityindex((prevIndex) => (prevIndex + 1) % publications.filter(pub => pub["tag"]=="Security").length);
+          setAIindex((prevIndex) => (prevIndex + 1) % publications.filter(pub => pub["tag"]=="AI").length);
+        }
+        , 5000);
+
+        return () => clearInterval(interval);
+      }, [publications]);
+        
 
   return (
     <div className="home-container">
@@ -91,7 +160,7 @@ function HomeTab() {
       <div className="top-lab-display">
         <img className="lab-name-display" src="https://i.imgur.com/yn4CCBv.png"></img>
      
-        <img className="top-display-image" alt="lab" src="https://i.imgur.com/xaqV3Lr.png"></img>
+        <img className="top-display-image" alt="lab" src="https://i.imgur.com/jyCBncl.jpeg"></img>
         </div>
 
         <div className="middle-lab-display">
@@ -134,26 +203,37 @@ function HomeTab() {
           <div className="about-lab-display">
 
             <div className={`${researchAreas == 'none' ? 'about-display-tab' : 'hiddenTab'}`}>
-                {/* <h4 className="about-tagline">Pioneering AI, IoT, and Security</h4> */}
       
                 <SlidingImage></SlidingImage>
 
-                <h3 className="lab-description">Prabuddha Chakraborty is an Assistant Professor at the University of Maine. His research interest lies in the intersecting areas of Artificial Intelligence, Internet-of-Things, and system security. He received his PhD in Electrical and Computer Engineering from the University of Florida. He has worked within the Security Software Team at Texas Instruments and the FPGA acceleration R&D team at Xilinx. His research effort has so far led to more than 20 peer-reviewed journal and conference articles published or accepted in prestigious venues such as Nature Scientific Reports, IEEE Internet of Things Journal, Neural Computing and Applications, IEEE Transactions on Information Forensics and Security, International Test Conference, and Design Automation Conference</h3>
+                <h3 className="lab-description">
+                  
+                  <p>Welcome to the Secure and Intelligent Edge Research Lab. We are a community of young academic researchers unified together by our desire to make an impact in the world around us. 
+                  </p>
+<p>We work in the University of Maine Electrical and Computer Engineering School.</p>
+
+Our lab works to combine multiple areas of experimentation and research; from edge devices and cybersecurity to artificial intelligence and
+</h3>
           
             </div>
 
             <div className={`${researchAreas == 'AI' ? 'about-display-tab' : 'hiddenTab'}`}>
-                {publications.filter(pub => pub["tag"]=="AI").map(pub => (
+                {publications.filter(pub => pub["tag"]=="AI").splice(AIindex,1).map(pub => (
                     <div className="publication">
-                        <a key={pub.name} href={pub.link} className="publication-title">{pub.name}</a>
+                        <h4 className="about-tagline">{pub.name}</h4>
+
+                        <img className="lab-display-image" src={pub.image}></img>
+
+
+                        <h3 className="lab-description">{pub.description}</h3>
                     </div>
                 ))}
               
             </div>
 
             <div className={`${researchAreas == 'IoT' ? 'about-display-tab' : 'hiddenTab'}`}>
-                 {publications.filter(pub => pub["tag"]=="IOT").slice(0, IOTindex).map(pub => (
-                    <div className="publication">
+                 {publications.filter(pub => pub["tag"]=="IOT").splice(IOTindex,1).map(pub => (
+                    <div className="publication" key={pub.name}>
                         <h4 className="about-tagline">{pub.name}</h4>
 
                         <img className="lab-display-image" src={pub.image}></img>
@@ -166,53 +246,32 @@ function HomeTab() {
             </div>
 
             <div className={`${researchAreas == 'Security' ? 'about-display-tab' : 'hiddenTab'}`}>
-                <h4 className="about-tagline">Security</h4>
-      
-                <img className="lab-display-image" src="https://www.cnet.com/a/img/resize/9a13e1e92a7b66cbff9db2934b3f66bf01a4afb6/hub/2023/08/24/821b0d86-e29b-4028-ac71-ef63ca020de8/gettyimages-1472123000.jpg?auto=webp&fit=crop&height=675&width=1200"></img>
+                   {publications.filter(pub => pub["tag"]=="Security").splice(SecurityIndex,1).map(pub => (
+                    <div className="publication" key={pub.name}>
+                        <h4 className="about-tagline">{pub.name}</h4>
+
+                        <img className="lab-display-image" src={pub.image}></img>
 
 
-                <h3 className="lab-description">System security involves protecting computer systems and networks from unauthorized access, use, disclosure, disruption, modification, or destruction. It encompasses various measures, such as authentication, encryption, access control, and intrusion detection, to ensure the confidentiality, integrity, and availability of information. Security is crucial in today's digital world to safeguard sensitive data and prevent cyber threats and attacks.</h3>
-          
+                        <h3 className="lab-description">{pub.description}</h3>
+
+                    </div>
+                ))}
             </div>
           </div>
 
       </div>
 
       <div className="bottom-lab-display">
-        <div className="recent-achievements">
-            <h2 className="section-title">Recent Achievements & Notable Contributions</h2>
-
-            <div className="achievements-container">
-              <h3>Notable Achievements</h3>
-              <ul>
-                <li>TTTC’s E. J. McCluskey Best Doctoral Thesis 2022 Award</li>
-                <li>Top Picks in Hardware and Embedded Security 2021, IEEE HSTTC</li>
-                <li>Innovation of the Year Award, University of Florida, 2022</li>
-                <li>Featured work on IEEE Spectrum for innovative electric vehicle charging technologies</li>
-              </ul>
-
-              <h3>Notable Research Contributions</h3>
-              <ul>
-                <li>HASTE: Software Security Analysis for Timing Attacks on Clear Hardware</li>
-                <li>SAIL: Analyzing Structural Artifacts of Logic Locking Using Machine Learning</li>
-                <li>MAGIC: Machine Learning Guided Image Compression for IoT</li>
-                <li>BINGO: Brain-Inspired Learning Memory Network</li>
-              </ul>
-            </div>
-        </div>
-
-        <div className="publications-display">
-            <h3>Publications</h3>
-
-            <div id="publication-list">
-                {publications.map(pub => (
-                    <div className="publication">
-                        <a key={pub.name} href={pub.link} className="publication-title">{pub.name}</a>
-                    </div>
-                ))}
-              
-            </div>
-        </div>
+        <Chrono key={newsKey} items={news} mode="VERTICAL_ALTERNATING" 
+                theme={{
+            primary: 'black',
+            secondary: 'orange',
+            cardBgColor: 'white',
+            titleColor: 'grey',
+            titleColorActive: 'black',
+          }}/>
+       
 
       </div>
 
