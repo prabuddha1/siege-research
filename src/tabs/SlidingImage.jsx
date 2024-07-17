@@ -25,18 +25,29 @@ const SlidingImage = () => {
         }
     ];
 
+    const renderImage = (item) => {
+        return (
+            <div style={{ maxWidth: '40vw', margin: '0 auto' }}>
+                <img
+                    src={item.original}
+                    alt={item.alt}
+                    style={{ width: '100%', height: 'auto', maxHeight: '48vh', objectFit: 'cover' , borderRadius: "5px"}}
+                />
+            </div>
+        );
+    };
 
     return (
-
-        <ImageGallery className="react-image-gallery-slide"
-        items={images}
-        showNav={true}
-        showThumbnails={false}
-        autoPlay={true}
-        slideInterval={7000}
-        showPlayButton={false}
-        showFullscreenButton={false}
-    />
+        <ImageGallery
+            items={images}
+            showNav={true}
+            showThumbnails={false}
+            autoPlay={true}
+            slideInterval={7000}
+            showPlayButton={false}
+            showFullscreenButton={false}
+            renderItem={renderImage}
+        />
     );
 };
 

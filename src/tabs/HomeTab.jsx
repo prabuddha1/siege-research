@@ -152,19 +152,31 @@ function HomeTab() {
 
         return () => clearInterval(interval);
       }, [publications]);
+
+
+    function handleScroll(){
+      window.scroll({
+        top: window.innerHeight * 1,
+        left: 0,
+        behavior: 'smooth',
+      });
+
+    }
+    
         
 
   return (
     <div className="home-container">
 
       <div className="top-lab-display">
-          <img className="site-header-image" src="https://i.imgur.com/lprVscR.jpeg"></img>
+          <div id="image-container"><img className="site-header-image" src="https://i.imgur.com/lprVscR.jpeg"></img></div>
+          <div class="fade-to-white"></div>
         {/* <img className="lab-name-display" src="https://i.imgur.com/yn4CCBv.png"></img>
      
         <img className="top-display-image" alt="lab" src="https://i.imgur.com/jyCBncl.jpeg"></img> */} 
 {/* 
           <h2 id="site-tagline">We are secure. We are SIEGE</h2> */}
-          <button id="show-me-button"> <span> See what we do </span> </button>
+          <button id="show-me-button" class="btn-67" onClick={handleScroll}>  See what we do  </button>
         </div>
 
         <div className="middle-lab-display">
@@ -207,57 +219,66 @@ function HomeTab() {
           <div className="about-lab-display">
 
             <div className={`${researchAreas == 'none' ? 'about-display-tab' : 'hiddenTab'}`}>
-      
+
+            <h3 id="welcome-header">Welcome to the Secure and Intelligent Edge Research Lab</h3>
+
                 <SlidingImage></SlidingImage>
 
                 <div className="lab-description">
-                  <h3>Welcome to the Secure and Intelligent Edge Research Lab</h3>
+                  
                   <p>We are a community of young academic researchers unified together by our desire to make an impact in the world around us.</p>
                   <p>We work in the University of Maine Electrical and Computer Engineering School.</p>
-                  <p>Our lab works to combine multiple areas of experimentation and research; from edge devices and cybersecurity to artificial intelligence and intern of things devices</p>
+                  <p>Our lab works to combine multiple areas of experimentation and research; from edge devices and cybersecurity to artificial intelligence and the internet of things</p>
               </div>
           
             </div>
 
             <div className={`${researchAreas == 'AI' ? 'about-display-tab' : 'hiddenTab'}`}>
                 {publications.filter(pub => pub["tag"]=="AI").splice(AIindex,1).map(pub => (
+                  <div>
+                    <h3 className="welcome-header">Here is one of our published research papers in AI!</h3>
                     <div className="publication">
-                        <h4 className="about-tagline">{pub.name}</h4>
+                        <h4 className="about-tagline welcome-header">{pub.name}</h4>
 
                         <img className="lab-display-image" src={pub.image}></img>
 
 
                         <h3 className="lab-description">{pub.description}</h3>
                     </div>
+                  </div>
                 ))}
               
             </div>
 
             <div className={`${researchAreas == 'IoT' ? 'about-display-tab' : 'hiddenTab'}`}>
                  {publications.filter(pub => pub["tag"]=="IOT").splice(IOTindex,1).map(pub => (
-                    <div className="publication" key={pub.name}>
-                        <h4 className="about-tagline">{pub.name}</h4>
-
-                        <img className="lab-display-image" src={pub.image}></img>
-
-
-                        <h3 className="lab-description">{pub.description}</h3>
-
-                    </div>
+                     <div>
+                     <h3 className="welcome-header">Here is one of our published research papers in IoT!</h3>
+                     <div className="publication">
+                         <h4 className="about-tagline welcome-header">{pub.name}</h4>
+ 
+                         <img className="lab-display-image" src={pub.image}></img>
+ 
+ 
+                         <h3 className="lab-description">{pub.description}</h3>
+                     </div>
+                   </div>
                 ))}
             </div>
 
             <div className={`${researchAreas == 'Security' ? 'about-display-tab' : 'hiddenTab'}`}>
                    {publications.filter(pub => pub["tag"]=="Security").splice(SecurityIndex,1).map(pub => (
-                    <div className="publication" key={pub.name}>
-                        <h4 className="about-tagline">{pub.name}</h4>
+                    <div>
+                    <h3 className="welcome-header">Here is one of our published research papers in Security!</h3>
+                    <div className="publication">
+                        <h4 className="about-tagline welcome-header">{pub.name}</h4>
 
                         <img className="lab-display-image" src={pub.image}></img>
 
 
                         <h3 className="lab-description">{pub.description}</h3>
-
                     </div>
+                  </div>
                 ))}
             </div>
           </div>
@@ -267,12 +288,26 @@ function HomeTab() {
       <div className="bottom-lab-display">
         <Chrono class="timeline" key={newsKey} items={news} mode="VERTICAL_ALTERNATING" 
                 theme={{
-            primary: 'black',
-            secondary: 'orange',
-            cardBgColor: 'white',
-            titleColor: 'grey',
-            titleColorActive: 'black',
-          }}/>
+                   primary: '#003263', // University of Maine Blue
+                   secondary: "#a8aaac",
+                  cardBgColor: "#f4f4f8",
+                  titleColor: '#003263', // Blue for title
+                  titleColorActive: '#00274C' ,// Dark Blue for active title
+                  cardTitleColor: '#003263',
+
+
+                  titleFont: "Georgia, serif",
+                  cardTitleFont: "Arial, sans-serif",
+                  cardSubtitleFont: "Roboto Mono, monospace",
+          }}
+          
+          cardHeight={250}
+  mediaHeight={150}
+  contentDetailsHeight={100}
+  readMore={true}
+          
+          
+          />
        
 
       </div>
