@@ -5,12 +5,85 @@
     text-decoration: none !important;
 }
 
-.top-lab-display {
-    transition: transform 0.3s ease, color 0.3s ease;
-    padding-top: 5vh;
-    
-  }
+.site-header-image{
+    width: 100vw;
+    height: 100vh;
+    clip-path: inset(0 0 5vh 0);
+}
 
+#show-me-button{
+    position: absolute !important;
+    font-size: 2vw;
+    top: 80vh;
+
+}
+
+
+#show-me-button {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+  } 
+   
+  #show-me-button:hover .btn-slide-show-text1 {
+    margin-left: 65px;
+  } 
+   
+  #show-me-button{
+    display: block;
+    cursor: pointer;
+    border: medium;
+    text-align: center;
+    overflow: hidden;
+    color: rgb(255, 255, 255) !important;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: rgb(51, 51, 51) !important;
+    padding: 17px 45px;
+    transition: 0.5s ease-in-out;
+  } 
+   
+  #show-me-button span {
+    position: relative;
+    z-index: 1;
+  } 
+   
+  #show-me-button::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 490%;
+    width: 140%;
+    transition: 0.5s ease-in-out;
+    transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  } 
+   
+  #show-me-button::after {
+    transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  } 
+   
+  /* #show-me-button::after {
+    background: rgb(128, 237, 153);
+  } 
+ */
+
+
+
+
+
+
+
+
+#site-tagline{
+    position: absolute;
+    top: 80vh;
+    color: white;
+    font-weight: bold;
+    font-size: 3vw;
+
+    background-color: black;
+    padding: 1vw;
+}
 
   .lab-name-display{
     border-top: solid black 2px;
@@ -33,11 +106,7 @@
     border-bottom-right-radius: 5px;
 }
   
-.top-lab-display:hover {
-    transform: translateY(-5px) scale(1.025);
-    box-shadow: 1px 12px 0px rgba(5, 5, 5, 0.074); /* Add box shadow when hovering */
 
-}
 
 
 .site-footer {
@@ -255,7 +324,7 @@ hr {
 }
 
 .offset-color2{
-    background: #d8d4d4;
+    background: #e2dede !important;
 }
 
 #about-image{
@@ -272,7 +341,7 @@ hr {
 
 
 .about-lab-display {
-    width: 45vw; /* Maintain current width */
+    width: 55vw; /* Maintain current width */
     height: 100vh;
     padding: 20px; /* Increase padding for better spacing */
 
@@ -356,8 +425,57 @@ hr {
     font-size: 0.8vw;
     
     flex-direction: column;
-    box-shadow: inset 0 0 1vw rgb(65, 65, 65);
+
+    text-shadow: 2px 2px 4px rgba(179, 147, 211, 0.1),
+               3px 4px 4px rgba(179, 147, 211, 0.15),
+               4px 6px 4px rgba(179, 147, 211, 0.2),
+               5px 8px 4px rgba(179, 147, 211, 0.25) !important;
+    
+
+
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
 }
+
+.research-area-display:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.research-area-display:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.research-area-display:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
 
 .about-header{
     width: 35vw;
@@ -390,7 +508,7 @@ hr {
 }
 
 .middle-lab-display{
-    width: 75vw;
+    width: 85vw;
     height: 100vh;
 
     display: flex;
@@ -411,7 +529,7 @@ hr {
     color: white;
 
     background: #1C2128; 
-    width: 40vw;
+    width: 45vw;
     height: 40vh;
 
     display: flex;
@@ -419,11 +537,6 @@ hr {
     align-items: center;
     font-weight: lighter;
     box-shadow: inset 0 0 3vw rgb(0, 0, 0);
-}
-
-.top-lab-display img{
-    width: 40vw;
-    height: 40vh;
 }
 
 .home-container{

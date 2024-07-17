@@ -38,10 +38,13 @@ h2{
   font-size: 15px;
 }
 
+.tab{
+  color: white;
+  padding: 5px 10px;
+}
+
 .selectedTab {
-  border: 1px solid #333;
-  background-color: #dadada;
-  color: #333;
+  color: white;
   padding: 10px 20px;
   border-radius: 4px;
 
@@ -51,9 +54,7 @@ h2{
   transition: background-color 0.3s ease;
 }
 
-.selectedTab:hover {
-  background-color: #ddd;
-}
+
 
 .hiddenTab{
   display: none !important;
@@ -77,6 +78,10 @@ h2{
   font-family: 'Lato', sans-serif;  /* Ensure font consistency */
   font-size: 18px;  /* Fixed font size for readability */
   font-weight: 400;
+  position: absolute;
+  z-index: 1;
+
+  background-color: #4f5e242d;
 }
 
 .site-header h2 {
@@ -87,7 +92,7 @@ h2{
 }
 
 .site-header h2:hover {
-  color: #829ca3;  /* Highlight color on hover */
+  color: #91a3a7;  /* Highlight color on hover */
 }
 
 #linked-in-logo {

@@ -158,9 +158,13 @@ function HomeTab() {
     <div className="home-container">
 
       <div className="top-lab-display">
-        <img className="lab-name-display" src="https://i.imgur.com/yn4CCBv.png"></img>
+          <img className="site-header-image" src="https://i.imgur.com/lprVscR.jpeg"></img>
+        {/* <img className="lab-name-display" src="https://i.imgur.com/yn4CCBv.png"></img>
      
-        <img className="top-display-image" alt="lab" src="https://i.imgur.com/jyCBncl.jpeg"></img>
+        <img className="top-display-image" alt="lab" src="https://i.imgur.com/jyCBncl.jpeg"></img> */} 
+{/* 
+          <h2 id="site-tagline">We are secure. We are SIEGE</h2> */}
+          <button id="show-me-button"> <span> See what we do </span> </button>
         </div>
 
         <div className="middle-lab-display">
@@ -277,10 +281,8 @@ function HomeTab() {
       
       <div className="site-footer">
           <h4>Contact Information</h4>
-          <p>Email: <a href="mailto:prabuddha@maine.edu">prabuddha@maine.edu</a></p>
-          <p>Explore More: <a href="https://www.google.com/scholar?q=Prabuddha+Chakraborty">Google Scholar Profile</a></p>
-          <p>Download: <a href="ProfileResumeLink">Resume</a> (updated 12/10/2023)</p>
-          <h3>Site Developed by Sophie Walden</h3>
+          <h3>Email: <a href="mailto:prabuddha@maine.edu">prabuddha@maine.edu</a></h3>
+          <p><a href="https://www.linkedin.com/in/sophie-walden-1227b9233/">Site Developed by Sophie Walden</a></p>
         </div>
 
 
