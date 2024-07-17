@@ -206,14 +206,12 @@ function HomeTab() {
       
                 <SlidingImage></SlidingImage>
 
-                <h3 className="lab-description">
-                  
-                  <p>Welcome to the Secure and Intelligent Edge Research Lab. We are a community of young academic researchers unified together by our desire to make an impact in the world around us. 
-                  </p>
-<p>We work in the University of Maine Electrical and Computer Engineering School.</p>
-
-Our lab works to combine multiple areas of experimentation and research; from edge devices and cybersecurity to artificial intelligence and
-</h3>
+                <div className="lab-description">
+                  <h3>Welcome to the Secure and Intelligent Edge Research Lab</h3>
+                  <p>We are a community of young academic researchers unified together by our desire to make an impact in the world around us.</p>
+                  <p>We work in the University of Maine Electrical and Computer Engineering School.</p>
+                  <p>Our lab works to combine multiple areas of experimentation and research; from edge devices and cybersecurity to artificial intelligence and intern of things devices</p>
+              </div>
           
             </div>
 
@@ -263,7 +261,7 @@ Our lab works to combine multiple areas of experimentation and research; from ed
       </div>
 
       <div className="bottom-lab-display">
-        <Chrono key={newsKey} items={news} mode="VERTICAL_ALTERNATING" 
+        <Chrono class="timeline" key={newsKey} items={news} mode="VERTICAL_ALTERNATING" 
                 theme={{
             primary: 'black',
             secondary: 'orange',

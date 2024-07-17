@@ -121,11 +121,14 @@ hr {
     height: auto; /* maintain aspect ratio */
 }
 
-
+.timeline{
+    overscroll-behavior: auto;
+}
 .bottom-lab-display {
     padding: 2vw 0;
     flex-wrap: wrap; /* ensures responsiveness */
     padding-bottom: 10vh;
+    
 }
 
 .offset-color1,
@@ -150,9 +153,19 @@ hr {
 
 .lab-description {
     padding: 30px; /* Increased padding */
-    text-align: justify;
+  
     line-height: 1.6; /* improves readability */
     color: #333; /* Dark grey for text for better readability */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 0px;
+}
+
+.lab-description p{
+    text-align: center;
 }
 
 .research-area-display {
