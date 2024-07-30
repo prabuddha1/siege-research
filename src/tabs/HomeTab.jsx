@@ -5,6 +5,7 @@ import './HomeTab.css';
 import React from 'react';
 import { Chrono } from "react-chrono";
 
+import CoverImage from './CoverImage.jsx';
 import SlidingImage from './SlidingImage.jsx';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -169,7 +170,8 @@ function HomeTab() {
     <div className="home-container">
 
       <div className="top-lab-display">
-          <div id="image-container"><img className="site-header-image" src="https://i.imgur.com/lprVscR.jpeg"></img></div>
+        <CoverImage></CoverImage>
+          {/* <div id="image-container"><img className="site-header-image" src="https://i.imgur.com/lprVscR.jpeg"></img></div> */}
           <div class="fade-to-white"></div>
         {/* <img className="lab-name-display" src="https://i.imgur.com/yn4CCBv.png"></img>
      

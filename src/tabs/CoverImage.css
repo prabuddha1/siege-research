@@ -1,0 +1,19 @@
+/* SlidingImage.css */
+.react-image-gallery .image-gallery-slide img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 300px !important; /* Adjust this value as needed */
+    object-fit: cover !important;
+}
+
+.react-image-gallery {
+    max-width: 600px !important; /* Adjust this value as needed */
+    margin: 0 auto !important;
+}
+
+.react-image-gallery .image-gallery-slide-wrapper {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: auto !important;
+}
