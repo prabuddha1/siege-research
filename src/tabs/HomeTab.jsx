@@ -69,7 +69,7 @@ function HomeTab() {
                 const updatedNews = [...prevNews, ...newsCards];
         
                 // Sort updatedNews by date ascending
-                updatedNews.sort((a, b) => new Date(a.title) - new Date(b.title));
+                updatedNews.sort((a, b) => new Date(b.title) - new Date(a.title));
         
                 return updatedNews;
               });
@@ -116,7 +116,7 @@ function HomeTab() {
                   const updatedNews = [...prevNews, ...newsCards];
           
                   // Sort updatedNews by date ascending
-                  updatedNews.sort((a, b) => new Date(a.title) - new Date(b.title));
+                  updatedNews.sort((a, b) => new Date(b.title) - new Date(a.title));
           
                   return updatedNews;
                 });
@@ -286,7 +286,7 @@ function HomeTab() {
       </div>
 
       <div className="bottom-lab-display">
-        <Chrono class="timeline" key={newsKey} items={news} mode="VERTICAL_ALTERNATING" 
+        <Chrono class="timeline" textDensity="LOW" scrollable={{ scrollbar: true }}  key={newsKey} items={news} mode="VERTICAL_ALTERNATING" 
                 theme={{
                    primary: '#003263', // University of Maine Blue
                    secondary: "#a8aaac",
@@ -294,8 +294,8 @@ function HomeTab() {
                   titleColor: '#003263', // Blue for title
                   titleColorActive: '#00274C' ,// Dark Blue for active title
                   cardTitleColor: '#003263',
-
-
+                  
+                 
                   titleFont: "Georgia, serif",
                   cardTitleFont: "Arial, sans-serif",
                   cardSubtitleFont: "Roboto Mono, monospace",

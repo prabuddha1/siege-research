@@ -66,14 +66,15 @@ h2{
 }
 
 .site-header {
-  width: 100%;  /* Extend full width of the viewport */
-  height: 60px;  /* Fixed height for consistency */
+  padding-left: 10%;
+  width: 95%;  /* Extend full width of the viewport */
+  height: 100px;  /* Fixed height for consistency */
 
   display: flex;
   justify-content: space-evenly;  /* Evenly space the elements */
   align-items: center;
   color: rgb(0, 0, 0);
-  padding: 0 20px;  /* Padding on sides for some breathing room */
+
 
   font-family: 'Lato', sans-serif;  /* Ensure font consistency */
   font-size: 18px;  /* Fixed font size for readability */
@@ -87,7 +88,7 @@ h2{
 .site-header h2 {
   cursor: pointer;  /* Indicates interactivity */
   margin: 0 20px;  /* Spacing between menu items */
-  font-size: 1.5vw;  /* Larger font size for importance */
+  font-size: 3vw;  /* Larger font size for importance */
   transition: color 0.3s ease;  /* Smooth transition for hover effects */
 }
 
@@ -96,13 +97,22 @@ h2{
 }
 
 #linked-in-logo {
-  width: 32px;  /* Fixed size for LinkedIn logo */
-  height: 32px;
+  width: 48px;  /* Fixed size for LinkedIn logo */
+  height: 48px;
   transition: transform 0.3s ease;  /* Smooth transform on hover */
 }
 
 #linked-in-logo:hover {
   transform: scale(1.1);  /* Slightly enlarge on hover */
+}
+
+#siege-logo{
+  width: 200px;
+  height: auto;
+  position: absolute;
+  top: 5px;
+  left: 50px;
+  z-index: 2;
 }
 
 
