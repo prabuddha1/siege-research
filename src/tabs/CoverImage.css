@@ -17,3 +17,9 @@
     align-items: center !important;
     height: auto !important;
 }
+
+.image-thumbnail{
+    width: 100vw;
+    height: 136vh;
+    transform: translateY(-18vh)
+}

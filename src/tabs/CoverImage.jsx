@@ -24,77 +24,74 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
 const storage = getStorage(app);
 
 const CoverImage = () => {
     const [images, setImages] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
 
-    const fileRef = ref(storage, 'coverImages.json');
     React.useEffect(() => {
-      // Get the download URL of the file
-      getDownloadURL(fileRef)
-        .then((url) => {
-          // Use the URL to download the file or perform further processing
-          console.log("Download URL:", url);
-
-          const fetchData = async () => {
-            try {
-              const response = await fetch(url);
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              const data = await response.json();
-
-              let imageData = [];
-              for (let i = 0; i < data.length; i++){
-                imageData.push( {original:  data[i],
-                    thumbnail: data[i],
-                    alt: `Image ${i}`,
-                    id: i});
-              }
-              setImages(data);
-              console.log(data);
-             
-
-            } catch (error) {
-              console.error('Failed to fetch cover images:', error);
-            } 
-          };
-
-          fetchData();
-        })
-        .catch((error) => {
-          // Handle any errors
-          console.error("Error getting download URL:", error);
-        });
-    }, []); // Empty dependency array means this effect runs once on mount
-
+      const fileRef = ref(storage, 'coverImages.json');
+  
+      const fetchData = async () => {
+        try {
+          const url = await getDownloadURL(fileRef);
+          const response = await fetch(url);
+  
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+  
+          const data = await response.json();
+  
+          const imageData = data.map((item, index) => ({
+            original: item,
+            thumbnail: item,
+            alt: `Image ${index}`,
+            id: index
+          }));
+  
+          setImages(imageData);
+          setLoading(false); // Set loading to false once images are loaded
+        } catch (error) {
+          console.error('Failed to fetch cover images:', error);
+          setLoading(false); // Set loading to false even if there's an error
+        }
+      };
+  
+      fetchData();
+    }, []);
 
     const renderImage = (item) => {
         return (
-            <div style={{ maxWidth: '40vw', margin: '0 auto' }}>
+            <div style={{ maxWidth: '100vw', margin: '0 auto' }}>
                 <img
                     src={item.original}
                     alt={item.alt}
-                    style={{ width: '100%', height: 'auto', maxHeight: '48vh', objectFit: 'cover' , borderRadius: "5px"}}
+                    style={{ width: '100vw', height: '100vh', objectFit: 'cover' , borderRadius: "5px"}}
                 />
             </div>
         );
     };
 
     return (
+      <div>
+      {loading ? (
+        <img className="image-thumbnail" src="https://i.imgur.com/10GR1C3.jpeg" alt="Temporary cover" />
+      ) : (
         <ImageGallery
-            items={images}
-            showNav={true}
-            showThumbnails={false}
-            autoPlay={true}
-            slideInterval={7000}
-            showPlayButton={false}
-            showFullscreenButton={false}
-            renderItem={renderImage}
+          items={images}
+          showNav={true}
+          showThumbnails={false}
+          autoPlay={true}
+          slideInterval={7000}
+          showPlayButton={false}
+          showFullscreenButton={false}
+          renderItem={renderImage}
         />
+      )}
+    </div>
+        
     );
 };
 
